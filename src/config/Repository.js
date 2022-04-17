@@ -3,6 +3,7 @@ import path from "path";
 
 import { Sequelize } from "sequelize";
 import Books from "../model/books.js";
+import Customer from "../model/customer.js";
 
 export default  class Repository {
       
@@ -33,6 +34,23 @@ export default  class Repository {
               db.sequelize = sequelize;
               db.Sequelize = Sequelize;
               db.models.Books = Books(sequelize);
+              db.models.Customer = Customer(sequelize);
+
+            //   db.models.Customer.hasMany(db.models.Books,{
+            //     onDelete: 'CASCADE',
+            //     as:'fk_customer_id',
+            //     foreignKey:{
+            //         fieldName:'customer_id',
+            //         allowNull:false
+            //     },
+            // });
+            // db.models.Books.belongsTo(db.models.Customer,{
+            //     as:'fk_customer_id',
+            //     foreignKey:{
+            //         fieldName:'customer_id',
+            //         allowNull:false
+            //     },
+            // });
 
               return db;
               

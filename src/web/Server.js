@@ -4,6 +4,8 @@ import Repository from "../config/Repository.js";
 
 import BooksService from "../services/BooksServices.js";
 import BooksController from "./Controllers/BooksController.js";
+import CustomerService from "../services/CustomerServices.js";
+import CustomerController from "./Controllers/CustomerController.js";
 
 export default  class Server{
 
@@ -35,6 +37,9 @@ export default  class Server{
         }).then(()=>{
             let bookService = new BooksService(db.models, db.sequelize);
             let bookController = new BooksController(bookService, this.app);
+
+            let customerService = new CustomerService(db.models, db.sequelize);
+            let customerController = new CustomerController(customerService, this.app);
 
         });
 
